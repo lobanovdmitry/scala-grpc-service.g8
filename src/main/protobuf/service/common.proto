@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package ru.dlobanov.service.a.protos;
+
+option java_package = "ru.dlobanov.service.a.api";
+
+enum TimeUnit {
+    MINUTES = 0;
+    HOURS = 1;
+    DAYS = 2;
+    WEEKS = 3;
+    MONTHS = 4;
+    YEARS = 5;
+}
+
+message TimePeriod {
+    int32 amount = 1;
+    TimeUnit unit = 2;
+}
