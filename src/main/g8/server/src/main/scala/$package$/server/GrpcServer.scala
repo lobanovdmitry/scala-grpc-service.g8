@@ -1,8 +1,8 @@
-package ru.dlobanov.service
+package $package$.server
 
 import com.typesafe.scalalogging.LazyLogging
 import io.grpc.{Server, ServerBuilder, ServerInterceptors}
-import ru.dlobanov.api.greeter.GreeterGrpc
+import $package$.api.greeter.GreeterGrpc
 
 import scala.concurrent.ExecutionContext
 import scala.language.existentials
@@ -17,7 +17,7 @@ class GrpcServer(service: GreeterGrpc.Greeter)(implicit ec: ExecutionContext) ex
       GreeterGrpc.bindService(service, ec)
     )
     server = serverBuilder.addService(serviceDefinition).asInstanceOf[ServerBuilder[_]].build().start()
-    logger.info(s"GRPC server started, listening on $port.")
+    logger.info(s"GRPC server started, listening on \$port.")
 
     sys.addShutdownHook {
       logger.info("Shutting down gRPC server since JVM is shutting down.")

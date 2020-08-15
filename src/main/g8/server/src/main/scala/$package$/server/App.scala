@@ -1,4 +1,4 @@
-package ru.dlobanov.service
+package $package$.server
 
 object App {
 

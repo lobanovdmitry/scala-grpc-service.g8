@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option java_package = "ru.dlobanov.api";
+option java_package = "$package$.api";
 
 enum TimeUnit {
     MINUTES = 0;

@@ -3,7 +3,7 @@ syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 import "common.proto";
 
-option java_package = "ru.dlobanov.api";
+option java_package = "$package$.api";
 
 service Greeter {
     rpc SayHello (HelloRequest) returns (HelloReply) {}

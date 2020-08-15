@@ -1,4 +1,4 @@
-package ru.dlobanov
+package $package$
 
 package object api {
 
