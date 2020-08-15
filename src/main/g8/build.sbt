@@ -25,7 +25,7 @@ lazy val server = (project in file("server"))
   .settings(commonSettings: _*)
   .settings(
     name := "$name;format="normalize"$-server",
-    libraryDependencies ++= `scala-logging` ++ grpcNetty,
+    libraryDependencies ++= `scala-logging` ++ grpcNetty ++ Seq(scalaTest % Test),
     mainClass in assembly := Some("$package$.server.App"),
     assemblyJarName in assembly := "$name;format="normalize"$.jar"
   )
