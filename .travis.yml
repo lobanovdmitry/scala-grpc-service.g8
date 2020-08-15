@@ -14,7 +14,7 @@ before_cache:
   - find $HOME/.sbt        -name "*.lock"               -print -delete
 
 jdk:
-  - oraclejdk8
+  - openjdk8
 
 script:
   ## This runs the template with the default parameters, and runs test within the templated app.
