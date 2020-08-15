@@ -1,8 +1,6 @@
 syntax = "proto3";
 
-package ru.dlobanov.service.a.protos;
-
-option java_package = "ru.dlobanov.service.a.api";
+option java_package = "ru.dlobanov.api";
 
 enum TimeUnit {
     MINUTES = 0;
