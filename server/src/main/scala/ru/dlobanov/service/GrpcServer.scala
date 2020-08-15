@@ -5,6 +5,7 @@ import io.grpc.{Server, ServerBuilder, ServerInterceptors}
 import ru.dlobanov.api.greeter.GreeterGrpc
 
 import scala.concurrent.ExecutionContext
+import scala.language.existentials
 
 class GrpcServer(service: GreeterGrpc.Greeter)(implicit ec: ExecutionContext) extends LazyLogging {
 
