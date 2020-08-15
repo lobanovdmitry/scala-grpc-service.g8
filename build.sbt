@@ -1,35 +1,13 @@
-import Dependencies._
-
-lazy val commonSettings = Seq(
-  version := "0.1.0-SNAPSHOT",
-  organization := "ru.dlobanov",
-  scalaVersion := "2.13.2",
-  test in assembly := {}
-)
-
-lazy val api = (project in file("api"))
-  .settings(commonSettings: _*)
-  .settings(
-    name := "scala-grpc-service-api",
-    libraryDependencies ++= scalaPb ++ Seq(
-      scalaTest % Test
-    ),
-    PB.targets in Compile := Seq(
-      scalapb.gen() -> (sourceManaged in Compile).value / "scalapb"
-    )
-  ).disablePlugins(AssemblyPlugin)
-
-lazy val server = (project in file("server"))
-  .dependsOn(api)
-  .aggregate(api)
-  .settings(commonSettings: _*)
-  .settings(
-    name := "scala-grpc-server",
-    libraryDependencies ++= `scala-logging` ++ grpcNetty,
-    mainClass in assembly := Some("com.example.Main"),
-    assemblyJarName in assembly := "grpc-server.jar"
-  )
-
+// This build is for this Giter8 template.
+// To test the template run `g8` or `g8Test` from the sbt session.
+// See http://www.foundweekends.org/giter8/testing.html#Using+the+Giter8Plugin for more details.
 lazy val root = (project in file("."))
-  .aggregate(api, server)
-  .disablePlugins(AssemblyPlugin)
+  .enablePlugins(ScriptedPlugin)
+  .settings(
+    name := "scala-grpc-service",
+    test in Test := {
+      val _ = (g8Test in Test).toTask("").value
+    },
+    scriptedLaunchOpts ++= List("-Xms1024m", "-Xmx1024m", "-XX:ReservedCodeCacheSize=128m", "-Xss2m", "-Dfile.encoding=UTF-8"),
+    resolvers += Resolver.url("typesafe", url("https://repo.typesafe.com/typesafe/ivy-releases/"))(Resolver.ivyStylePatterns)
+  )
