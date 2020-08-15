@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/lobanovdmitry/scala-grpc-service.g8.svg?branch=master)](https://travis-ci.com/lobanovdmitry/scala-grpc-service.g8)
+
 This is a [Giter8][g8] template for Scala GRPC service.
 
 ```
