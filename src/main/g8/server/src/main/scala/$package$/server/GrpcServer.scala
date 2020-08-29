@@ -4,15 +4,16 @@ import com.typesafe.scalalogging.LazyLogging
 import io.grpc.{Server, ServerBuilder, ServerInterceptors}
 import $package$.api.greeter.GreeterGrpc
 
+import java.util.concurrent.Executor
 import scala.concurrent.ExecutionContext
 import scala.language.existentials
 
-class GrpcServer(service: GreeterGrpc.Greeter)(implicit ec: ExecutionContext) extends LazyLogging {
+class GrpcServer(service: GreeterGrpc.Greeter)(implicit ec: ExecutionContext with Executor) extends LazyLogging {
 
   private var server: Server = _
 
   def start(port: Int): GrpcServer = {
-    val serverBuilder = ServerBuilder.forPort(port)
+    val serverBuilder = ServerBuilder.forPort(port).executor(ec)
     val serviceDefinition = ServerInterceptors.intercept(
       GreeterGrpc.bindService(service, ec)
     )
